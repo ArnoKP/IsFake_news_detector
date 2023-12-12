@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Fake news detector</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../static/css/jumbotron-narrow.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <div class="container">
+      <div class="header clearfix">
+        <h3 class="text-muted"></h3>
+      </div>
+
+      <div class="jumbotron">
+        <h1>If fake newspaper prediction</h1>
+        <p class="lead">Fill the needed data to predict the median value!</p>
+        <!-- <p><a class="btn btn-lg btn-success" href="home" role="button">Get started</a></p> -->
+      </div class="form-row">
+        <form action="" id="prediction-form" method="post">
+        	<div class="form-row">
+			    <div class="form-group col-md-6">
+			      <label for="Article">Article</label>
+			      <input type="number" step="0.01" class="form-control" id="MedInc" name="MedInc" placeholder="Enter Value">
+			    </div>
+		</div>
+		<button type="submit" class="btn btn-primary" onclick="setAction('/predict/')">Predict via local model</button>
+	</form>
+	<br>
+      <footer class="footer">
+        <p>&copy; Vivadata 2023</p>
+      </footer>
+
+    </div> <!-- /container -->
+  </body>
+</html>
+
+<script>
+    function setAction(action) {
+        document.getElementById('prediction-form').action = action;
+    }
+</script>
