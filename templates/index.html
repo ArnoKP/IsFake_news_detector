@@ -31,14 +31,12 @@
         <p class="lead">Fill the needed data to predict the median value!</p>
         <!-- <p><a class="btn btn-lg btn-success" href="home" role="button">Get started</a></p> -->
       </div class="form-row">
-        <form action="" id="prediction-form" method="post">
+        <form method="post">
         	<div class="form-row">
-			    <div class="form-group col-md-6">
-			      <label for="Article">Article</label>
-			      <input type="text" class="form-control" id="MedInc" name="MedInc" placeholder="Enter Value">
-			    </div>
+			<textarea name="Article"></textarea>
+			<input type="submit" value='Submit'>
 		</div>
-		<button type="submit" class="btn btn-primary" onclick="setAction('/predict/')">Predict via local model</button>
+		<button type="submit" class="btn btn-primary" onclick="setAction('/predict/')">Predict</button>
 	</form>
 	<br>
       <footer class="footer">
