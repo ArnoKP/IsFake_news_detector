@@ -5,7 +5,7 @@ from tensorflow.keras.preprocessing import sequence
 from flask import Flask, render_template, request
 
 app = Flask(__name__)
-model = pickle.load(open("GRU_model.sav", "rb"))
+model = pickle.load(open("GRU_model.pkl", "rb"))
 #model = tf.saved_model.load('saved_GRU_model.h5')
 
 tokenizer = Tokenizer()
