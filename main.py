@@ -3,6 +3,12 @@ import tensorflow
 from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing import sequence
 from flask import Flask, render_template, request
+import nltk
+from nltk.tokenize import word_tokenize
+from nltk.corpus import stopwords
+
+nltk.download('stopwords')
+nltk.download('punkt')
 
 app = Flask(__name__)
 model = pickle.load(open("GRU_model.pkl", "rb"))
