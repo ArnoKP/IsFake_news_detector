@@ -1,4 +1,5 @@
 import pickle
+import numpy as np
 import tensorflow
 from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing import sequence
@@ -74,7 +75,6 @@ def result():
     else:
         real_pred = 0
 
-print(real_pred)
     #pred = [1 if prd > 0.5 else 0 for prd in pred]
     return render_template("prediction.html", isfake=real_pred)
 
