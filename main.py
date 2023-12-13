@@ -41,7 +41,7 @@ def token_pad_text(text):
     tokenizer.fit_on_texts(tokens)
     text_vect = tokenizer.texts_to_sequences(tokens)
     
-    text_pad = sequence.pad_sequences(test_vect,
+    text_pad = sequence.pad_sequences(text_vect,
                                   value=0,
                                   padding='post',
                                   truncating='post',
