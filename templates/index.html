@@ -31,15 +31,15 @@
         <p class="lead">Fill the text box with press article to discover it ...</p>
         <!-- <p><a class="btn btn-lg btn-success" href="home" role="button">Get started</a></p> -->
       </div class="form-row">
-        <form method="post">
-		<div class="form-outline">
+        <form action="" id="prediction-form" method="post">
+		    <div class="form-outline">
   		  <label class="form-label" for="Article"></label>
   		  <textarea class="form-control" id="Article" name="Article" placeholder="Paste your article here..." rows="4"></textarea>
-		</div>
-		<button type="submit" class="btn btn-primary btn-block mb-4" onclick="setAction('/predict/')">
+		  </div>
+		  <button type="submit" class="btn btn-primary btn-block mb-4" onclick="setAction('/predict/')">
 		  Launch prediction	
-		</button>
-	</form>
+		  </button>
+	      </form>
 	<br>
       <footer class="footer">
         <p>&copy; Vivadata 2023</p>
