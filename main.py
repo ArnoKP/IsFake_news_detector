@@ -27,7 +27,8 @@ class FormQuery(BaseModel):
 
 def token_pad_text(text):
 
-    text = form_query.Article
+    #text = form_query.Article
+
     text = text.lower()
     #tokens = word_tokenize(text)
     tokens = text.split()
@@ -48,22 +49,27 @@ def token_pad_text(text):
     return text_pad
 
 @app.route('/', methods=['GET'])
-
 def fake_news():
         return render_template("index.html")
 
-@app.route('/predict/', methods=['POST'])
+def local_model_result():
+    form_query = FormQuery(**request.form.to_dict(flat=True))
 
+    return form_query.Article
+
+@app.route('/predict/', methods=['POST'])
 def result():
-        if request.method == 'POST':
-            Article = request.form['Article']
-            
-            text_pad = token_pad_text(Article)
+
+    #if request.method == 'POST':
+
+        #Article = request.form['Article']
+    Article = local_model_result()       
+    text_pad = token_pad_text(Article)
 
         #reg = model.predict([info_stopwords])
-        pred = model.predict(text_pad)
-        pred = [1 if prd > 0.5 else 0 for prd in pred]
-        return render_template("prediction.html", isfake=pred)
+    pred = model.predict(text_pad)
+    pred = [1 if prd > 0.5 else 0 for prd in pred]
+    return render_template("prediction.html", isfake=pred)
 
 if __name__ == '__main__':
     app.debug = True
