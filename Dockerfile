@@ -12,6 +12,6 @@ CMD ["gunicorn", "-b", "0.0.0.0:7860", "main:app"]
 
 RUN bash -c 'mkdir -p /code/{nltk}'
 
-RUN python -m nltk.download("stopwords", download_dir="/code/nltk")
+#RUN python -m nltk.download("stopwords", download_dir="/code/nltk")
+RUN python -m nltk.downloader -d /code/nltk stopwords punkt
 
-RUN python -m nltk.download("punkt", download_dir="/code/nltk")
