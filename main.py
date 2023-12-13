@@ -20,7 +20,7 @@ model = pickle.load(open("GRU_model.pkl", "rb"))
 #model = tf.saved_model.load('saved_GRU_model.h5')
 
 class FormQuery(BaseModel):
-    Article: Text = Field(..., validation_alias="Article")
+    Article: str = Field(..., validation_alias="Article")
 
 
 def token_pad_text(Article):
