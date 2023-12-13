@@ -15,6 +15,8 @@ from nltk.corpus import stopwords
 #nltk.download('stopwords', download_dir='/code/nltk')
 #nltk.download('punkt', download_dir='/code/nltk')
 
+python -m nltk.downloader -d /code/nltk stopwords punkt
+
 app = Flask(__name__)
 model = pickle.load(open("GRU_model.pkl", "rb"))
 #model = tf.saved_model.load('saved_GRU_model.h5')
