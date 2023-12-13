@@ -67,8 +67,15 @@ def result():
     text_pad = token_pad_text(Article)
 
         #reg = model.predict([info_stopwords])
-    pred = model.predict(text_pad)
-    pred = [1 if prd > 0.5 else 0 for prd in pred]
+    real_pred = model.predict(text_pad)
+    real_pred = np.mean(real_pred)
+    if real_pred >= 0.5:
+        real_pred = 1
+    else:
+        real_pred = 0
+
+print(real_pred)
+    #pred = [1 if prd > 0.5 else 0 for prd in pred]
     return render_template("prediction.html", isfake=pred)
 
 if __name__ == '__main__':
