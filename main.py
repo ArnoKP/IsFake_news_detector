@@ -8,15 +8,24 @@ app = Flask(__name__)
 model = pickle.load(open("GRU_model.pkl", "rb"))
 #model = tf.saved_model.load('saved_GRU_model.h5')
 
-tokenizer = Tokenizer()
+class FormQuery(BaseModel):
+    Article: Text = Field(..., validation_alias="Article")
 
-def token(text):
-    tokenizer.fit_on_texts(text)
-    tokenizer.texts_to_sequences(text)
-    return text_vect
+
+def token_pad_text(Article):
+
+    text = Article.lower()
+    tokens = word_tokenize(text)
+    tokens = [t for t in tokens if t.isalpha()]
+    tokens = [t for t in tokens if t not in stop_words]
+
+    #tokenizer = Tokenizer()
+    tokenizer = Tokenizer(num_words=total_uniq_words)
+
+    tokenizer.fit_on_texts(tokens)
+    text_vect = tokenizer.texts_to_sequences(tokens)
     
-def pad(text_vect):
-    sequence.pad_sequences(test_vect,
+    text_pad = sequence.pad_sequences(test_vect,
                                   value=0,
                                   padding='post',
                                   truncating='post',
@@ -32,9 +41,14 @@ def fake_news():
 
 def result():
         if request.method == 'POST':
-                text = request.form['info_stopwords']
-        reg = model.predict([info_stopwords])
-        return render_template("prediction.html", isfake=reg)
+            Article = request.form['Article']
+            
+            text_pad = token_pad_text(Article)
+
+        #reg = model.predict([info_stopwords])
+        pred = model.predict(text_pad)
+        pred = [1 if prd > 0.5 else 0 for prd in pred]
+        return render_template("prediction.html", isfake=pred)
 
 if __name__ == '__main__':
     app.debug = True
