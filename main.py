@@ -76,7 +76,7 @@ def result():
 
 print(real_pred)
     #pred = [1 if prd > 0.5 else 0 for prd in pred]
-    return render_template("prediction.html", isfake=pred)
+    return render_template("prediction.html", isfake=real_pred)
 
 if __name__ == '__main__':
     app.debug = True
