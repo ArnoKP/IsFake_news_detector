@@ -7,8 +7,10 @@ import nltk
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 
-nltk.download('stopwords')
-nltk.download('punkt')
+NLTK_DATA = '/code/nltk'
+
+python -m nltk.download -d NLTK_DATA stopwords punkt
+#nltk.download('punkt')
 
 app = Flask(__name__)
 model = pickle.load(open("GRU_model.pkl", "rb"))
