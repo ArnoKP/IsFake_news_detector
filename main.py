@@ -15,7 +15,7 @@ from nltk.corpus import stopwords
 #nltk.download('stopwords', download_dir='/code/nltk')
 #nltk.download('punkt', download_dir='/code/nltk')
 
-python -m nltk.downloader -d /code/nltk stopwords punkt
+#python -m nltk.downloader -d /code/nltk stopwords punkt
 
 app = Flask(__name__)
 model = pickle.load(open("GRU_model.pkl", "rb"))
@@ -25,12 +25,14 @@ class FormQuery(BaseModel):
     Article: str = Field(..., validation_alias="Article")
 
 
-def token_pad_text(Article):
+def token_pad_text(text):
 
-    text = Article.lower()
-    tokens = word_tokenize(text)
+    text = form_query.Article
+    text = text.lower()
+    #tokens = word_tokenize(text)
+    tokens = text.split()
     tokens = [t for t in tokens if t.isalpha()]
-    tokens = [t for t in tokens if t not in stop_words]
+    #tokens = [t for t in tokens if t not in stop_words]
 
     #tokenizer = Tokenizer()
     tokenizer = Tokenizer(num_words=total_uniq_words)
