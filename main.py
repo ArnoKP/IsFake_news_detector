@@ -2,6 +2,7 @@ import pickle
 import tensorflow
 from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing import sequence
+from pydantic import BaseModel, Field
 from flask import Flask, render_template, request
 import nltk
 from nltk.tokenize import word_tokenize
