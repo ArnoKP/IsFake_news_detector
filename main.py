@@ -4,6 +4,7 @@ from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing import sequence
 from pydantic import BaseModel, Field
 from flask import Flask, render_template, request
+import requests
 import nltk
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
@@ -23,7 +24,6 @@ model = pickle.load(open("GRU_model.pkl", "rb"))
 
 class FormQuery(BaseModel):
     Article: str = Field(..., validation_alias="Article")
-
 
 def token_pad_text(text):
 
