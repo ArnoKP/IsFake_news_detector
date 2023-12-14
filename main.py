@@ -70,10 +70,10 @@ def result():
         #reg = model.predict([info_stopwords])
     real_pred = model.predict(text_pad)
 
-    if real_pred >= 0.5:
-        real_pred = 1
-    else:
-        real_pred = 0
+    #if real_pred >= 0.5:
+    #    real_pred = 1
+    #else:
+    #    real_pred = 0
 
     return render_template("prediction.html", isfake=real_pred)
 
