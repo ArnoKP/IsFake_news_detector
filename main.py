@@ -47,7 +47,8 @@ def token_pad_text(text):
     #                              padding='post',
     #                              truncating='post',
     #                              maxlen=400)
-    return text_pad
+    #return text_pad
+    return text_vect
 
 @app.route('/', methods=['GET'])
 def fake_news():
