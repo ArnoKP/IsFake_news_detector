@@ -43,8 +43,8 @@ def token_pad_text(text):
     #                  char_level = False,
     #                  oov_token = 'UNKN')
 
-    tokenizer.fit_on_texts(text)
-    text_vect = tokenizer.texts_to_sequences(text)
+    tokenizer.fit_on_texts(list(text))
+    text_vect = tokenizer.texts_to_sequences(list(text))
     
     text_pad = sequence.pad_sequences(text_vect,
                                   value=0,
