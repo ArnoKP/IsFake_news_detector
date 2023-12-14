@@ -21,7 +21,8 @@ tokenizer = pickle.load(open("Tokenizer.pkl", "rb"))
 
 
 class FormQuery(BaseModel):
-    Article: str = Field(..., validation_alias="Article")
+    #Article: str = Field(..., validation_alias="Article")
+    Article: list = Field(..., validation_alias="Article")
 
 def token_pad_text(text):
 
@@ -42,13 +43,14 @@ def token_pad_text(text):
     #tokenizer.fit_on_texts(tokens)
     text_vect = tokenizer.texts_to_sequences(tokens)
     
-    #text_pad = sequence.pad_sequences(text_vect,
-    #                              value=0,
-    #                              padding='post',
-    #                              truncating='post',
-    #                              maxlen=400)
-    #return text_pad
-    return text_vect
+    text_pad = sequence.pad_sequences(text_vect,
+                                  value=0,
+                                  padding='post',
+                                  truncating='post',
+                                  maxlen=400)
+    return text_pad
+
+
 
 @app.route('/', methods=['GET'])
 def fake_news():
@@ -66,11 +68,9 @@ def result():
 
         #Article = request.form['Article']
     Article = local_model_result()       
-    #text_pad = token_pad_text(Article)
-    text_vect = token_pad_text(Article)
+    text_pad = token_pad_text(Article)
 
-        #reg = model.predict([info_stopwords])
-    real_pred = model.predict(text_vect)
+    real_pred = model.predict(text_pad, batch_size=1))
 
     #if real_pred >= 0.5:
     #    real_pred = 1
