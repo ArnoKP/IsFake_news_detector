@@ -39,14 +39,14 @@ def token_pad_text(text):
     #                  char_level = False,
     #                  oov_token = 'UNKN')
 
-    tokenizer.fit_on_texts(tokens)
+    #tokenizer.fit_on_texts(tokens)
     text_vect = tokenizer.texts_to_sequences(tokens)
     
-    text_pad = sequence.pad_sequences(text_vect,
-                                  value=0,
-                                  padding='post',
-                                  truncating='post',
-                                  maxlen=400)
+    #text_pad = sequence.pad_sequences(text_vect,
+    #                              value=0,
+    #                              padding='post',
+    #                              truncating='post',
+    #                              maxlen=400)
     return text_pad
 
 @app.route('/', methods=['GET'])
@@ -65,10 +65,11 @@ def result():
 
         #Article = request.form['Article']
     Article = local_model_result()       
-    text_pad = token_pad_text(Article)
+    #text_pad = token_pad_text(Article)
+    text_vect = token_pad_text(Article)
 
         #reg = model.predict([info_stopwords])
-    real_pred = model.predict(text_pad)
+    real_pred = model.predict(text_vect)
 
     #if real_pred >= 0.5:
     #    real_pred = 1
