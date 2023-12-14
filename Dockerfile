@@ -10,10 +10,10 @@ COPY . .
 
 CMD ["gunicorn", "-b", "0.0.0.0:7860", "main:app"]
 
-#RUN bash -c 'mkdir -p /code/{nltk}'
+RUN bash -c 'mkdir -p /code/{nltk}'
 
-#RUN python -m nltk.downloader -d /code/nltk stopwords punkt
-
+RUN python -m nltk.downloader -d /code/nltk stopwords punkt
+RUN bash -c 'chmod o+w /code/nltk'
 #USER root
 #RUN mkdir -p /nltk_data
 #RUN chmod -R 777 /nltk_data
