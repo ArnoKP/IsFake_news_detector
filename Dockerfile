@@ -12,7 +12,7 @@ CMD ["gunicorn", "-b", "0.0.0.0:7860", "main:app"]
 
 RUN bash -c 'mkdir -p /code/{nltk}'
 
-ENV NLTK_DATA = /code/ntlk
+ENV NLTK_DATA = /code/nltk
 
 RUN python -m nltk.downloader -d /code/nltk stopwords punkt
 
