@@ -35,6 +35,7 @@ def token_pad_text(text):
     #tokens = word_tokenize(text)
     tokens = text.split(' ')
     print(tokens)
+    print(type(tokens))
     #tokens = [t for t in tokens if t.isalpha()]
     #tokens = [t for t in tokens if t not in stop_words]
 
