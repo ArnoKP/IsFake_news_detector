@@ -27,7 +27,7 @@ class FormQuery(BaseModel):
 
 
 
-def token_pad_text():
+def token_pad_text(text):
 
     #text = form_query.Article
 
