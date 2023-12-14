@@ -33,7 +33,8 @@ def token_pad_text(text):
 
     #text = text.lower()
     #tokens = word_tokenize(text)
-    #tokens = text.split(' ')
+    tokens = text.split(' ')
+    print(tokens)
     #tokens = [t for t in tokens if t.isalpha()]
     #tokens = [t for t in tokens if t not in stop_words]
 
@@ -43,8 +44,8 @@ def token_pad_text(text):
     #                  char_level = False,
     #                  oov_token = 'UNKN')
 
-    tokenizer.fit_on_texts(list(text))
-    text_vect = tokenizer.texts_to_sequences(list(text))
+    tokenizer.fit_on_texts(text)
+    text_vect = tokenizer.texts_to_sequences(text)
     
     text_pad = sequence.pad_sequences(text_vect,
                                   value=0,
