@@ -10,15 +10,6 @@ import nltk
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 
-#NLTK_DATA = '/code/nltk'
-
-#python -m nltk.download -d NLTK_DATA stopwords punkt
-#nltk.download('punkt')
-#nltk.download('stopwords', download_dir='/code/nltk')
-#nltk.download('punkt', download_dir='/code/nltk')
-
-#python -m nltk.downloader -d /code/nltk stopwords punkt
-
 app = Flask(__name__)
 model = pickle.load(open("GRU_model2.pkl", "rb"))
 tokenizer = pickle.load(open("tokenizer.pkl", "rb"))
@@ -31,13 +22,16 @@ def token_pad_text(text):
     #text = form_query.Article
 
     text = text.lower()
-    #tokens = word_tokenize(text)
-    tokens = text.split()
+    tokens = word_tokenize(text)
+    #tokens = text.split()
     tokens = [t for t in tokens if t.isalpha()]
     #tokens = [t for t in tokens if t not in stop_words]
 
-    tokenizer = Tokenizer()
-    #tokenizer = Tokenizer(num_words=total_uniq_words)
+    tokenizer = Tokenizer(num_words=len(list_words_uniq),
+                      char_level = False,
+                      oov_token = 'UNKN')
+
+    #tokenizer = Tokenizer()
 
     tokenizer.fit_on_texts(tokens)
     text_vect = tokenizer.texts_to_sequences(tokens)
@@ -46,7 +40,7 @@ def token_pad_text(text):
                                   value=0,
                                   padding='post',
                                   truncating='post',
-                                  maxlen=128)
+                                  maxlen=400)
     return text_pad
 
 @app.route('/', methods=['GET'])
@@ -69,13 +63,12 @@ def result():
 
         #reg = model.predict([info_stopwords])
     real_pred = model.predict(text_pad)
-    real_pred = np.mean(real_pred)
+
     if real_pred >= 0.5:
         real_pred = 1
     else:
         real_pred = 0
 
-    #pred = [1 if prd > 0.5 else 0 for prd in pred]
     return render_template("prediction.html", isfake=real_pred)
 
 if __name__ == '__main__':
