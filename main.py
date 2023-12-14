@@ -22,8 +22,10 @@ tokenizer = pickle.load(open("Tokenizer.pkl", "rb"))
 
 
 class FormQuery(BaseModel):
-    #Article: str = Field(..., validation_alias="Article")
-    Article: Optional[list] = Field(..., validation_alias="Article")
+    Article: str = Field(..., validation_alias="Article")
+    #Article: Optional[list] = Field(..., validation_alias="Article")
+
+
 
 def token_pad_text(text):
 
@@ -49,8 +51,8 @@ def token_pad_text(text):
                                   padding='post',
                                   truncating='post',
                                   maxlen=400)
+    print(text_pad)
     return text_pad
-
 
 
 @app.route('/', methods=['GET'])
