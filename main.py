@@ -20,8 +20,8 @@ from nltk.corpus import stopwords
 #python -m nltk.downloader -d /code/nltk stopwords punkt
 
 app = Flask(__name__)
-model = pickle.load(open("GRU_model.pkl", "rb"))
-#model = tf.saved_model.load('saved_GRU_model.h5')
+model = pickle.load(open("GRU_model2.pkl", "rb"))
+tokenizer = pickle.load(open("tokenizer.pkl", "rb"))
 
 class FormQuery(BaseModel):
     Article: str = Field(..., validation_alias="Article")
