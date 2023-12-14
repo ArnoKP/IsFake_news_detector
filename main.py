@@ -31,10 +31,10 @@ def token_pad_text(text):
 
     #text = form_query.Article
 
-    text = text.lower()
-    tokens = word_tokenize(text)
+    #text = text.lower()
+    #tokens = word_tokenize(text)
     #tokens = text.split(' ')
-    tokens = [t for t in tokens if t.isalpha()]
+    #tokens = [t for t in tokens if t.isalpha()]
     #tokens = [t for t in tokens if t not in stop_words]
 
     #tokenizer = Tokenizer()
@@ -43,7 +43,7 @@ def token_pad_text(text):
     #                  char_level = False,
     #                  oov_token = 'UNKN')
 
-    #tokenizer.fit_on_texts(tokens)
+    tokenizer.fit_on_texts(text)
     text_vect = tokenizer.texts_to_sequences(tokens)
     
     text_pad = sequence.pad_sequences(text_vect,
