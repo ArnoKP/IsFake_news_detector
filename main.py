@@ -14,7 +14,7 @@ from nltk.tokenize import word_tokenize
 
 app = Flask(__name__)
 model = pickle.load(open("GRU_model2.pkl", "rb"))
-Tokenizer = pickle.load(open("Tokenizer.pkl", "rb"))
+tokenizer = pickle.load(open("Tokenizer.pkl", "rb"))
 
 #with open('tokenizer.pkl', 'rb') as handle:
 #    tokenizer = pickle.load(handle)
@@ -35,9 +35,9 @@ def token_pad_text(text):
 
     #tokenizer = Tokenizer()
     #tokenizer = Tokenizer(num_words=len(list_words_uniq),
-    tokenizer = Tokenizer(num_words=100996,
-                      char_level = False,
-                      oov_token = 'UNKN')
+    #tokenizer = Tokenizer(num_words=100996,
+    #                  char_level = False,
+    #                  oov_token = 'UNKN')
 
     tokenizer.fit_on_texts(tokens)
     text_vect = tokenizer.texts_to_sequences(tokens)
