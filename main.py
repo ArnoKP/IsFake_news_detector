@@ -7,10 +7,10 @@ from pydantic import BaseModel, Field
 from flask import Flask, render_template, request
 import requests
 import nltk
-from nltk.tokenize import word_tokenize
-from nltk.corpus import stopwords
+#from nltk.tokenize import word_tokenize
+#from nltk.corpus import stopwords
 
-nltk.download('punkt')
+#nltk.download('punkt')
 
 
 app = Flask(__name__)
@@ -25,8 +25,7 @@ def token_pad_text(text):
     #text = form_query.Article
 
     text = text.lower()
-    tokens = word_tokenize(text)
-    #tokens = text.split()
+    tokens = text.split(' ')
     tokens = [t for t in tokens if t.isalpha()]
     #tokens = [t for t in tokens if t not in stop_words]
 
