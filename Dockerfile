@@ -15,6 +15,7 @@ CMD ["gunicorn", "-b", "0.0.0.0:7860", "main:app"]
 #RUN python -m nltk.downloader -d /code/nltk stopwords punkt
 
 USER root
+RUN mkdir -p /nltk_data
 RUN chmod -R 777 /nltk_data
 
 RUN python -m nltk.download('punkt')
