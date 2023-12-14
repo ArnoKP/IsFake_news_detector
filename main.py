@@ -70,7 +70,7 @@ def result():
     Article = local_model_result()       
     text_pad = token_pad_text(Article)
 
-    real_pred = model.predict(text_pad, batch_size=1))
+    real_pred = model.predict(text_pad, batch_size=1)
 
     #if real_pred >= 0.5:
     #    real_pred = 1
