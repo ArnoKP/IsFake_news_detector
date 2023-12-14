@@ -10,7 +10,7 @@ import nltk
 #from nltk.tokenize import word_tokenize
 #from nltk.corpus import stopwords
 
-#nltk.download('punkt')
+nltk.download('punkt')
 
 app = Flask(__name__)
 model = pickle.load(open("GRU_model2.pkl", "rb"))
@@ -34,8 +34,8 @@ def token_pad_text(text):
 
     #tokenizer = Tokenizer(num_words=len(list_words_uniq),
     #tokenizer = Tokenizer(num_words=100996,
-                      char_level = False,
-                      oov_token = 'UNKN')
+    #                  char_level = False,
+    #                  oov_token = 'UNKN')
 
     #tokenizer = Tokenizer()
 
