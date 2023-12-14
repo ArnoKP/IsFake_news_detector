@@ -32,7 +32,8 @@ def token_pad_text(text):
     tokens = [t for t in tokens if t.isalpha()]
     #tokens = [t for t in tokens if t not in stop_words]
 
-    tokenizer = Tokenizer(num_words=len(list_words_uniq),
+    #tokenizer = Tokenizer(num_words=len(list_words_uniq),
+    tokenizer = Tokenizer(num_words=100996,
                       char_level = False,
                       oov_token = 'UNKN')
 
