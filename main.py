@@ -8,6 +8,7 @@ from flask import Flask, render_template, request
 import requests
 import nltk
 from nltk.tokenize import word_tokenize
+from typing import List, Optional
 #from nltk.corpus import stopwords
 
 #nltk.download('punkt')
@@ -22,7 +23,7 @@ tokenizer = pickle.load(open("Tokenizer.pkl", "rb"))
 
 class FormQuery(BaseModel):
     #Article: str = Field(..., validation_alias="Article")
-    Article: list = Field(..., validation_alias="Article")
+    Article: Optional[list] = Field(..., validation_alias="Article")
 
 def token_pad_text(text):
 
