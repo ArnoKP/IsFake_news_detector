@@ -28,7 +28,8 @@ def token_pad_text(text):
     #text = form_query.Article
 
     text = text.lower()
-    tokens = text.split(' ')
+    tokens = word_tokenize(text)
+    #tokens = text.split(' ')
     tokens = [t for t in tokens if t.isalpha()]
     #tokens = [t for t in tokens if t not in stop_words]
 
