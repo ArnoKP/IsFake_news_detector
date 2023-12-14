@@ -14,10 +14,10 @@ from nltk.tokenize import word_tokenize
 
 app = Flask(__name__)
 model = pickle.load(open("GRU_model2.pkl", "rb"))
-#tokenizer = pickle.load(open("tokenizer.pkl", "rb"))
+tokenizer = pickle.load(open("Tokenizer.pkl", "rb"))
 
-with open('tokenizer.pkl', 'rb') as handle:
-    tokenizer = pickle.load(handle)
+#with open('tokenizer.pkl', 'rb') as handle:
+#    tokenizer = pickle.load(handle)
 
 
 class FormQuery(BaseModel):
